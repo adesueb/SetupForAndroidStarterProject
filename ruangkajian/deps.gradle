@@ -1,0 +1,104 @@
+def versions = [
+        kotlin: '1.3.60',
+        firebase: '16.0.2',
+        dagger: '2.26',
+        retrofit: '2.6.0',
+        okhttp: '3.12.9',
+        okio: '2.0.0',
+        mockito: '2.22.0',
+        mockitoKotlin: '2.0.0-RC2',
+        testRunner: '1.0.2',
+        testRules: '1.0.2',
+        espresso: '3.0.2',
+        moshi: '1.7.0',
+        moshiConverter: '2.4.0'
+]
+
+ext.deps = [:]
+
+deps.dagger = [
+        core                    : "com.google.dagger:dagger:${versions.dagger}",
+        compiler                : "com.google.dagger:dagger-compiler:${versions.dagger}",
+        android                 : "com.google.dagger:dagger-android:${versions.dagger}",
+        androidSupport          : "com.google.dagger:dagger-android-support:${versions.dagger}",
+        androidProcessor        : "com.google.dagger:dagger-android-processor:${versions.dagger}"
+]
+
+deps.retrofit = [
+        core                    : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+        gsonConverter           : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+        rxjavaAdapterVersion1   : "com.squareup.retrofit2:adapter-rxjava:${versions.retrofit}",
+        rxjavaAdapterVersion2   : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+]
+
+deps.okhttp = [
+        core                    : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+        logging                 : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+        io                      : "com.squareup.okio:okio:${versions.okio}",
+        mockWebserver           : "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
+        idlingResource          : "com.jakewharton.espresso:okhttp3-idling-resource:1.0.0"
+]
+
+deps.moshi = [
+        core                    : "com.squareup.moshi:moshi-kotlin:${versions.moshi}",
+        codegen                 : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}",
+        converter               : "com.squareup.retrofit2:converter-moshi:${versions.moshiConverter}"
+]
+
+
+deps.rxJava = [
+        version2                : "io.reactivex.rxjava2:rxjava:2.2.8",
+        androidVersion1         : "io.reactivex:rxandroid:1.2.1",
+        androidVersion2         : "io.reactivex.rxjava2:rxandroid:2.1.1",
+        interop                 : "com.github.akarnokd:rxjava2-interop:0.13.4",
+        relayVersion1           : "com.jakewharton.rxrelay:rxrelay:1.2.0",
+        relayVersion2           : "com.jakewharton.rxrelay2:rxrelay:2.1.0"
+]
+
+deps.rxJava.binding = [
+        core                    : "com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha2",
+        recyclerView            : "com.jakewharton.rxbinding3:rxbinding-recyclerview:3.0.0-alpha2",
+        swipeRefreshLayout      : "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:3.0.0-alpha2",
+        material                : "com.jakewharton.rxbinding3:rxbinding-material:3.0.0-alpha2",
+        viewPager               : "com.jakewharton.rxbinding3:rxbinding-viewpager:3.0.0-alpha2",
+]
+
+deps.androidx = [
+        core                    : "androidx.core:core:1.1.0",
+        coreKotlin              : "androidx.core:core-ktx:1.1.0",
+        appcompat               : "androidx.appcompat:appcompat:1.1.0",
+        lagacyV4                : "androidx.legacy:legacy-support-v4:1.0.0",
+        recyclerView            : "androidx.recyclerview:recyclerview:1.0.0",
+        annotations             : "androidx.annotation:annotation:1.0.2",
+        materialDesign          : "com.google.android.material:material:1.1.0",
+        mediaRouter             : "androidx.mediarouter:mediarouter:1.0.0",
+        constraintLayout        : "androidx.constraintlayout:constraintlayout:2.0.0-beta4",
+        palette                 : "androidx.palette:palette:1.0.0",
+        sqlite                  : "androidx.sqlite:sqlite-framework:2.0.1",
+        sqliteKotlin            : "androidx.sqlite:sqlite-ktx:2.0.1",
+        architectureCore        : "androidx.arch.core:core-runtime:2.0.1",
+        multidex                : "androidx.multidex:multidex:2.0.1",
+        viewPager2              : "androidx.viewpager2:viewpager2:1.0.0"
+]
+
+deps.androidx.test = [
+        core                    : "androidx.test:core:1.1.0",
+        runner                  : 'androidx.test:runner:1.1.1',
+        rules                   : 'androidx.test:rules:1.1.1',
+        fragment                : 'androidx.fragment:fragment-testing:1.1.0'
+]
+
+deps.androidx.test.espresso = [
+        core                    : 'androidx.test.espresso:espresso-core:3.1.1',
+        contrib                 : 'androidx.test.espresso:espresso-contrib:3.1.1',
+        intents                 : 'androidx.test.espresso:espresso-intents:3.1.1',
+        web                     : 'androidx.test.espresso:espresso-web:3.1.1',
+]
+
+deps.mockito = [
+        core                    : "org.mockito:mockito-core:${versions.mockito}",
+        android                 : "org.mockito:mockito-android:${versions.mockito}",
+        kotlin                  : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}",
+]
+
+deps.junit                  = "junit:junit:4.12"

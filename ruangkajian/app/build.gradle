@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.ruangkajian.android"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "com.ruangkajian.android.rule.TestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation deps.androidx.recyclerView
+
+    implementation deps.rxJava.androidVersion2
+
+    testImplementation 'junit:junit:4.13'
+
+    //region dagger
+    kapt deps.dagger.compiler
+    kapt deps.dagger.androidProcessor
+    implementation deps.dagger.core
+    implementation(deps.dagger.androidSupport) {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }//endregion dagger
+
+    //region retrofit
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gsonConverter
+    implementation deps.retrofit.rxjavaAdapterVersion2
+    implementation deps.okhttp.core
+    implementation deps.okhttp.logging
+    implementation deps.okhttp.io
+    //endregion retrofit
+
+    //region Moshi
+    implementation deps.moshi.converter
+    implementation deps.moshi.core
+    kapt deps.moshi.codegen
+    //endregion Moshi
+
+    //region testrunner
+    androidTestImplementation(deps.androidx.test.runner)
+    androidTestImplementation(deps.androidx.test.rules)
+    testImplementation(deps.junit)
+    //endregion testrunner
+
+    //region mockito
+    testImplementation deps.mockito.core
+    testImplementation deps.mockito.kotlin
+    androidTestImplementation deps.mockito.core
+    androidTestImplementation deps.mockito.android
+    androidTestImplementation deps.mockito.kotlin
+    //endregion mockito
+
+    //region espresso
+    androidTestImplementation deps.androidx.test.espresso.core
+    androidTestImplementation deps.androidx.test.espresso.intents
+    androidTestImplementation deps.androidx.test.espresso.contrib
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //endregion espresso
+}
