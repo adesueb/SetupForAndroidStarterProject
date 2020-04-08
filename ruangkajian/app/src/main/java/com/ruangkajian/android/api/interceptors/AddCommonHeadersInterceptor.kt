@@ -25,7 +25,7 @@ class AddCommonHeadersInterceptor(
     private fun addHeaders(request: Request): Request {
         return request.newBuilder()
             .addHeader(PLATFORM, platform)
-            .addHeader(AUTH, auth)
+            .addHeader(KEY, auth)
             .addHeader(USER_AGENT, userAgent)
             .addHeader(APP_INFO, appInfo)
             .addHeader(ACCEPT_LANGUAGE, normalizeLanguageCode(languageCode))
@@ -57,7 +57,7 @@ class AddCommonHeadersInterceptor(
 
     companion object {
         private const val PLATFORM = "X-API-Platform"
-        private const val AUTH = "X-API-Auth"
+        private const val KEY = "X-API-KEY"
         private const val USER_AGENT = "User-Agent"
         private const val APP_INFO = "X-API-App-Info"
         private const val ACCEPT_LANGUAGE = "Accept-Language"

@@ -3,6 +3,7 @@ package com.ruangkajian.android.di
 import android.os.Build
 import android.util.Log
 import com.ruangkajian.android.BuildConfig
+import com.ruangkajian.android.api.HomeApi
 import com.ruangkajian.android.api.interceptors.AddCommonHeadersInterceptor
 import dagger.Module
 import dagger.Provides
@@ -20,7 +21,6 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
     @Provides
-    @Named("MoshiRetrofit")
     @Singleton
     fun provideRetrofitMoshi(
         @BaseUrl baseUrl: String
@@ -31,6 +31,11 @@ class NetworkModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
+    }
+
+    @Provides
+    fun provideHomeApi(retrofit: Retrofit): HomeApi {
+        return retrofit.create(HomeApi::class.java)
     }
 
 
@@ -74,7 +79,7 @@ class NetworkModule {
     }
 
     companion object {
-        private val AUTH = "S2xZnMbHw7RkGdYPirvWyN8Vf46TUpKs"
+        private val AUTH = "0a66089e84bbe996fa94d9d555c2fafeb04b8b791b6f95166687f579694839bd339"
         private val PLATFORM = "android"
     }
 }

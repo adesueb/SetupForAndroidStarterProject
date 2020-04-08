@@ -1,6 +1,6 @@
 package com.ruangkajian.android.di
 
-import com.ruangkajian.android.MainActivity
+import com.ruangkajian.android.home.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
